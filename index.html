@@ -19,20 +19,21 @@
 <head>
     <title>Redirecting...</title>
     <script type="text/javascript">
-        // ฟังก์ชันในการเปิดแท็บใหม่และปิดแท็บปัจจุบัน
-        function openAndClose() {
-            // เปิดแท็บใหม่
-            var newTab = window.open("https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec", "_blank");
+        // ฟังก์ชันในการโหลดเนื้อหาภายใน iframe และปิดแท็บหลังจากโหลด
+        function loadAndClose() {
+            var iframe = document.createElement('iframe');
+            iframe.src = "https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec";
+            iframe.style.display = 'none'; // ซ่อน iframe
+            document.body.appendChild(iframe);
 
-            // ใช้ setTimeout เพื่อให้แน่ใจว่าการเปลี่ยนเส้นทางเสร็จสิ้น
+            // ใช้ setTimeout เพื่อรอให้ iframe โหลด
             setTimeout(function() {
-                // ปิดแท็บปัจจุบัน
-                window.close();
+                window.close(); // ปิดแท็บ
             }, 1000); // รอ 1 วินาทีก่อนปิด
         }
 
         // เรียกฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
-        window.onload = openAndClose;
+        window.onload = loadAndClose;
     </script>
 </head>
 <body>
