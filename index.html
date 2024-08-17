@@ -13,27 +13,29 @@
 </body>
 </html>
 -->
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Redirecting...</title>
     <script type="text/javascript">
-        window.onload = function() {
+        // ฟังก์ชันในการเปิดแท็บใหม่และปิดแท็บปัจจุบัน
+        function openAndClose() {
             // เปิดแท็บใหม่
-            var newTab = window.open("", "_blank");
+            var newTab = window.open("https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec", "_blank");
 
-            // เปลี่ยนเส้นทางในแท็บใหม่
-            newTab.location.href = "https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec";
-
-            // รอ 1 วินาทีก่อนปิดแท็บ
+            // ใช้ setTimeout เพื่อให้แน่ใจว่าการเปลี่ยนเส้นทางเสร็จสิ้น
             setTimeout(function() {
-                newTab.close();
-            }, 1000); // รอ 1 วินาทีก่อนปิดแท็บ
-        };
+                // ปิดแท็บปัจจุบัน
+                window.close();
+            }, 1000); // รอ 1 วินาทีก่อนปิด
+        }
+
+        // เรียกฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+        window.onload = openAndClose;
     </script>
 </head>
 <body>
-    <!-- ข้อความสำรองในกรณีที่ JavaScript ถูกปิดการใช้งาน -->
     <p>If you are not redirected automatically, follow this <a href="https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec">link</a>.</p>
 </body>
 </html>
