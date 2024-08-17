@@ -13,13 +13,30 @@
 </body>
 </html>
 -->
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0;url=https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec">
+    <script type="text/javascript">
+        // กำหนด URL ที่ต้องการเปลี่ยนเส้นทางไป
+        var redirectUrl = "https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec";
+
+        // รอให้หน้าเว็บโหลดเสร็จ
+        window.onload = function() {
+            // เปลี่ยนเส้นทางไปยัง URL ที่กำหนด
+            window.location.href = redirectUrl;
+
+            // ใช้ setTimeout เพื่อให้มีเวลาสำหรับการเปลี่ยนเส้นทาง
+            setTimeout(function() {
+                // ปิดหน้าเว็บ
+                window.close();
+            }, 1000); // รอ 1 วินาทีก่อนปิดหน้า
+        };
+    </script>
 </head>
 <body>
+    <!-- ข้อความสำรองในกรณีที่ JavaScript ถูกปิดการใช้งาน -->
     <p>If you are not redirected automatically, follow this <a href="https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec">link</a>.</p>
 </body>
 </html>
