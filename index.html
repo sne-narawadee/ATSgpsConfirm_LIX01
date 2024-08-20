@@ -1,3 +1,4 @@
+<!--
 <!doctype html>
 <html lang="th">
 <head>
@@ -14,5 +15,109 @@ frameborder="0"
 scrolling="no"
 style="width: 100%; height: 100%">
 </iframe>
+</body>
+</html>
+-->
+
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SNE-eDocument</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .close-button {
+            display: none; /* ซ่อนปุ่มเริ่มต้น */
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* ให้ปุ่มอยู่เหนือ iframe */
+        }
+    </style>
+</head>
+<body>
+    <button class="close-button" onclick="closeWindow()">ปิดหน้า</button>
+    <iframe
+      id="app"
+      src="https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec"
+      allow="geolocation"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
+
+    <script>
+        // ฟังก์ชันปิดหน้า
+        function closeWindow() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.open('', '_self').close();
+            }
+        }
+
+        // ฟังก์ชันส่งข้อมูลพิกัด
+        function sendData(lat, lng) {
+            var xhr = new XMLHttpRequest();
+            var url = 'https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec';
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    if (xhr.responseText === "Success") {
+                        // แสดงปุ่มเมื่อการตอบกลับเป็น "Success"
+                        document.querySelector('.close-button').style.display = 'block';
+                    }
+                } else {
+                    console.error('Failed to send data');
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Request failed');
+            };
+            xhr.send('lat=' + encodeURIComponent(lat) + '&lng=' + encodeURIComponent(lng));
+        }
+
+        // ฟังก์ชันเพื่อรับพิกัดจาก geolocation API
+        function getGeolocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    sendData(lat, lng);
+                }, function(error) {
+                    console.error('Error getting geolocation:', error);
+                });
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+
+        // แสดงปุ่มปิดหน้าเมื่อหน้าเว็บโหลดเสร็จ
+        window.onload = function() {
+            getGeolocation();
+            document.querySelector('.close-button').style.display = 'block'; // แสดงปุ่มหลังจากโหลดหน้าเว็บเสร็จ
+        };
+    </script>
 </body>
 </html>
