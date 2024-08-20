@@ -1,4 +1,4 @@
-<!--
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,36 +8,9 @@
     </script>
 </head>
 <body>
-    <!-- ข้อความสำรองในกรณีที่ JavaScript ถูกปิดการใช้งาน --> <!--
+    <!-- ข้อความสำรองในกรณีที่ JavaScript ถูกปิดการใช้งาน -->
     <p>If you are not redirected automatically, follow this <a href="https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec">link</a>.</p>
 </body>
 </html>
--->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        // ฟังก์ชันในการโหลดเนื้อหาภายใน iframe และปิดแท็บหลังจากโหลด
-        function loadAndClose() {
-            var iframe = document.createElement('iframe');
-            iframe.src = "https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec";
-            iframe.style.display = 'none'; // ซ่อน iframe
-            document.body.appendChild(iframe);
 
-            // ใช้ setTimeout เพื่อรอให้ iframe โหลด
-            setTimeout(function() {
-                window.close(); // ปิดแท็บ
-            }, 1000); // รอ 1 วินาทีก่อนปิด
-        }
-
-        // เรียกฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
-        window.onload = loadAndClose;
-    </script>
-</head>
-<body>
-    <!-- ข้อความสำรองในกรณีที่ JavaScript ถูกปิดการใช้งาน -->
-    <p>If you are not redirected automatically, follow this <a href="https://script.google.com/macros/s/AKfycbx1iQJ7MPBC5wx18924xX6VKZpQNw02orJEH5n2g9AhIcGkExn5EIt0gT3drLvz6mqgXQ/exec" onclick="window.close(); return false;">link</a>.</p>
-</body>
-</html>
