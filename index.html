@@ -20,7 +20,7 @@
         }
         #save-button {
             position: absolute;
-            top: 60px; /* กำหนดตำแหน่งจากด้านบน */
+            top: 20px; /* กำหนดตำแหน่งจากด้านบน */
             left: 50%;
             transform: translateX(-50%);
             padding: 10px 20px;
@@ -31,6 +31,20 @@
             border-radius: 5px;
             cursor: pointer;
             z-index: 1000; /* ให้ปุ่มอยู่เหนือ iframe */
+        }
+        /* สไตล์สำหรับกล่องข้อความแจ้งเตือน */
+        #notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            display: none; /* ซ่อนกล่องข้อความเริ่มต้น */
+            z-index: 1000; /* ให้กล่องข้อความอยู่เหนือ iframe */
         }
     </style>
 </head>
@@ -44,6 +58,8 @@
     </iframe>
     
     <button id="save-button">บันทึก</button>
+    
+    <div id="notification">กรุณาเปิดการอนุญาตให้เข้าถึงตำแหน่ง(เปิด Location )เพื่อใช้ฟีเจอร์นี้</div>
 
     <script>
         // ฟังก์ชันสำหรับเปิดลิงก์ใหม่เมื่อคลิกปุ่ม
@@ -51,21 +67,22 @@
             window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
         });
 
-        // ฟังก์ชันเพื่อขอสิทธิ์การเข้าถึงตำแหน่ง
+        // ฟังก์ชันเพื่อขอสิทธิ์การเข้าถึงตำแหน่งและแสดงข้อความแจ้งเตือนหากจำเป็น
         function requestLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
-                        // เมื่อได้รับตำแหน่งแล้ว
+                        // เมื่อได้รับตำแหน่งแล้วซ่อนกล่องข้อความแจ้งเตือน
+                        document.getElementById('notification').style.display = 'none';
                         console.log('Latitude: ' + position.coords.latitude);
                         console.log('Longitude: ' + position.coords.longitude);
                     },
                     function(error) {
-                        // เมื่อไม่สามารถรับตำแหน่งได้
+                        // เมื่อไม่สามารถรับตำแหน่งได้แสดงกล่องข้อความแจ้งเตือน
                         if (error.code === error.PERMISSION_DENIED) {
-                            alert('กรุณาเปิดการอนุญาตให้เข้าถึงตำแหน่งเพื่อใช้ฟีเจอร์นี้');
+                            document.getElementById('notification').style.display = 'block';
                         } else {
-                            alert('เกิดข้อผิดพลาดในการขอข้อมูลตำแหน่ง');
+                            console.error('Error occurred. Error code: ' + error.code);
                         }
                     }
                 );
@@ -75,23 +92,11 @@
         }
 
         // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
-        //setTimeout(function() {
-        //    window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
-        //}, 3000);
+      //  setTimeout(function() {
+      //      window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
+      //  }, 3000);
 
         // เรียกใช้ฟังก์ชันเพื่อขอสิทธิ์การเข้าถึงตำแหน่ง
-        requestLocation();
-    </script>
-</body>
-</html>
-
-
-        // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
-        //setTimeout(function() {
-        //    window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
-       // }, 3000);
-
-        // เรียกใช้ฟังก์ชันเพื่อบังคับให้เปิด location
         requestLocation();
     </script>
 </body>
