@@ -20,7 +20,7 @@
         }
         #save-button {
             position: absolute;
-            top: 100px; /* กำหนดตำแหน่งจากด้านบน */
+            top: 20px; /* กำหนดตำแหน่งจากด้านบน */
             left: 50%;
             transform: translateX(-50%);
             padding: 10px 20px;
@@ -35,7 +35,7 @@
         /* สไตล์สำหรับกล่องข้อความแจ้งเตือน */
         #notification {
             position: fixed;
-            top: 20px;
+            top: 150px;
             left: 50%;
             transform: translateX(-50%);
             padding: 20px;
@@ -48,6 +48,8 @@
             width: 90%;
             max-width: 400px;
             text-align: center;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -95,9 +97,9 @@
         }
 
         // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
-      //  setTimeout(function() {
-     ///       window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
-     //   }, 3000);
+        //setTimeout(function() {
+        //    window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
+       // }, 3000);
 
         // เรียกใช้ฟังก์ชันเพื่อขอสิทธิ์การเข้าถึงตำแหน่ง
         requestLocation();
