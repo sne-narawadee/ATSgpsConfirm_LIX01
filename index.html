@@ -20,7 +20,7 @@
         }
         #save-button {
             position: absolute;
-            top: 150px; /* วางปุ่มไว้ที่ด้านบนของหน้าจอ */
+            top: 20px; /* วางปุ่มไว้ที่ด้านบนของหน้าจอ */
             left: 50%;
             transform: translateX(-50%);
             padding: 10px 20px;
@@ -55,7 +55,9 @@
 
         // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำให้ปุ่มค่อยๆ ปรากฏ
         window.onload = function() {
+            console.log('Window loaded. Starting timer...');
             setTimeout(function() {
+                console.log('Timer completed. Showing button.');
                 document.getElementById('save-button').style.opacity = 1;
             }, 3000); // 3000 มิลลิวินาที = 3 วินาที
         };
