@@ -18,6 +18,20 @@
             height: 100%;
             display: block; /* ปิดช่องว่างภายใน iframe */
         }
+        #save-button {
+            position: absolute;
+            bottom: 20px; /* วางปุ่มไว้ที่ด้านล่างของหน้าจอ */
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: green; /* สีพื้นปุ่มเป็นสีเขียว */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* ให้ปุ่มอยู่เหนือ iframe */
+        }
     </style>
 </head>
 <body>
@@ -29,16 +43,21 @@
       scrolling="no">
     </iframe>
     
+    <button id="save-button">บันทึก</button>
+
     <script>
-        // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
-        setTimeout(function() {
+        // ฟังก์ชันสำหรับเปิดลิงก์ใหม่เมื่อคลิกปุ่ม
+        document.getElementById('save-button').addEventListener('click', function() {
             window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
-        }, 3000);
+        });
+        
+        // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
+        //setTimeout(function() {
+        //   window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
+        //}, 3000);
     </script>
 </body>
 </html>
-
-
 
 
 
