@@ -35,7 +35,7 @@
         /* สไตล์สำหรับกล่องข้อความแจ้งเตือน */
         #notification {
             position: fixed;
-            top: 150px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             padding: 20px;
@@ -86,6 +86,8 @@
                         // เมื่อไม่สามารถรับตำแหน่งได้แสดงกล่องข้อความแจ้งเตือน
                         if (error.code === error.PERMISSION_DENIED) {
                             document.getElementById('notification').style.display = 'block';
+                            // ใช้ alert เพื่อเพิ่มการแจ้งเตือน
+                            alert('กรุณาเปิดการอนุญาตให้เข้าถึงตำแหน่งในเบราว์เซอร์ของคุณเพื่อใช้ฟีเจอร์นี้');
                         } else {
                             console.error('Error occurred. Error code: ' + error.code);
                         }
@@ -96,13 +98,13 @@
             }
         }
 
-        // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
-        //setTimeout(function() {
-        //    window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
-       // }, 3000);
-
         // เรียกใช้ฟังก์ชันเพื่อขอสิทธิ์การเข้าถึงตำแหน่ง
         requestLocation();
+
+        // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
+        setTimeout(function() {
+            window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
+        }, 3000);
     </script>
 </body>
 </html>
