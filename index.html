@@ -20,7 +20,7 @@
         }
         #save-button {
             position: absolute;
-            top: 20px; /* กำหนดตำแหน่งจากด้านบน */
+            top: 100px; /* กำหนดตำแหน่งจากด้านบน */
             left: 50%;
             transform: translateX(-50%);
             padding: 10px 20px;
@@ -45,6 +45,9 @@
             border-radius: 5px;
             display: none; /* ซ่อนกล่องข้อความเริ่มต้น */
             z-index: 1000; /* ให้กล่องข้อความอยู่เหนือ iframe */
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
         }
     </style>
 </head>
@@ -59,7 +62,7 @@
     
     <button id="save-button">บันทึก</button>
     
-    <div id="notification">กรุณาเปิดการอนุญาตให้เข้าถึงตำแหน่ง(เปิด Location )เพื่อใช้ฟีเจอร์นี้</div>
+    <div id="notification">กรุณาเปิดการอนุญาตให้เข้าถึงตำแหน่งในเบราว์เซอร์ของคุณเพื่อใช้ฟีเจอร์นี้</div>
 
     <script>
         // ฟังก์ชันสำหรับเปิดลิงก์ใหม่เมื่อคลิกปุ่ม
@@ -93,8 +96,8 @@
 
         // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำการเปลี่ยนเส้นทาง
       //  setTimeout(function() {
-      //      window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
-      //  }, 3000);
+     ///       window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
+     //   }, 3000);
 
         // เรียกใช้ฟังก์ชันเพื่อขอสิทธิ์การเข้าถึงตำแหน่ง
         requestLocation();
