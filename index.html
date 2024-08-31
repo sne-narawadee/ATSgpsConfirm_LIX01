@@ -20,7 +20,7 @@
         }
         #save-button {
             position: absolute;
-            top: 20px; /* วางปุ่มไว้ที่ด้านบนของหน้าจอ */
+            top: 150px; /* วางปุ่มไว้ที่ด้านบนของหน้าจอ */
             left: 50%;
             transform: translateX(-50%);
             padding: 10px 20px;
@@ -53,20 +53,11 @@
             window.location.href = 'https://sne-narawadee.github.io/ATSGDailyRpt';
         });
 
-        // รอให้ iframe โหลดเสร็จแล้วค่อยแสดงปุ่ม
-        window.addEventListener('message', function(event) {
-            if (event.data === 'iframe-loaded') {
-                // เมื่อ iframe โหลดเสร็จแล้ว ทำให้ปุ่มค่อยๆ ปรากฏ
-                document.getElementById('save-button').style.opacity = 1;
-            }
-        });
-
-        // ส่งข้อความไปที่ iframe เพื่อให้มันบอกว่าโหลดเสร็จแล้ว
+        // รอ 3 วินาที (3000 มิลลิวินาที) แล้วทำให้ปุ่มค่อยๆ ปรากฏ
         window.onload = function() {
-            var iframe = document.getElementById('app');
-            iframe.onload = function() {
-                iframe.contentWindow.postMessage('check-loaded', '*');
-            };
+            setTimeout(function() {
+                document.getElementById('save-button').style.opacity = 1;
+            }, 3000); // 3000 มิลลิวินาที = 3 วินาที
         };
     </script>
 </body>
